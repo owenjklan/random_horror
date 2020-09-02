@@ -1,0 +1,30 @@
+places = [
+    "elevator",
+    "research base",
+    "primary school",
+    "high school",
+    "hospital",
+    "cemetary",
+    "church",
+    "factory",
+    "mine shaft",
+    "quarry",
+    "space station",
+    "basement",
+    "attic",
+    "minecraft server",
+    "chatroom",
+    "youtube channel",
+    "dark web",
+    "lake",
+    "beach",
+    "forest",
+    "vortex",
+]
+
+place_adjectives = [
+    "abandoned",
+    "creepy",
+    "burnt-out",
+    "top-secret",
+]
