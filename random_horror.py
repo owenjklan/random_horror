@@ -1,33 +1,18 @@
 #!/usr/bin/env python3
-import pprint
 import json
 
 import click
 
 from random import choice
 
-from places import places, place_adjectives
-from who import who, who_adjectives
-from plots import plot_devices
-from misc import misc
+
+def load_word_list(f):
+    return [
+        w.strip() for w in open(f, "r").readlines() if len(w.strip()) > 0
+    ]
 
 
-def pick_random_plot():
-    plot_base = choice(plots)
-    sub_parts = []
-
-    if "{}" not in plot_base:
-        return plot_base
-
-    for sub in range(plot_base[0].count("{}")):
-        sub_parts.append(choice(plot_base[sub]))
-
-    sub_tuple = tuple(sub_parts)
-    print("ST: {}".format(sub_tuple))
-    return plot_base[0].format(sub_tuple)
-
-
-def pick_items():
+def pick_items(misc):
     items = []
     for x in range(5):
         items.append(choice(misc))
@@ -57,6 +42,13 @@ def print_to_console(number, pick):
 @click.argument("count", type=int)
 @click.option("--json", 'output_json', is_flag=True, default=False)
 def main(count, output_json):
+    who_adjectives = load_word_list("lists/who_adjectives.txt")
+    who = load_word_list("lists/who_nouns.txt")
+    plot_devices = load_word_list("lists/plot_devices.txt")
+    items_list = load_word_list("lists/misc.txt")
+    place_adjectives = load_word_list("lists/place_adjectives.txt")
+    places = load_word_list("lists/place_nouns.txt")
+
     print()
 
     if output_json:
@@ -72,7 +64,7 @@ def main(count, output_json):
             choice(place_adjectives), choice(places)
         ])
         pick['plot_dev_value'] = choice(plot_devices)
-        pick['random_items'] = pick_items()
+        pick['random_items'] = pick_items(items_list)
 
         if output_json:
             json_objects.append(pick)
