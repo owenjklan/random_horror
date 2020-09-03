@@ -28,20 +28,17 @@ def print_to_console(number, pick):
         print("\u2500" * 80)
 
     print("#{}: \033[33;1mWho:\033[0m   {}".format(
-        number + 1, pick['who_value']))
+        number + 1, pick['who']))
     print("    \033[33;1mPlace:\033[0m {}".format(
-        pick['place_value']))
+        pick['place']))
     print("    \033[33;1mPlot-device:\033[0m")
-    print("           {}".format(pick['plot_dev_value']))
+    print("           {}".format(pick['plot_device']))
     print("    \033[33;1m5 Random items, pick at least 2:\033[0m")
     print("           {}".format(pick['random_items']))
     print()
 
 
-@click.command()
-@click.argument("count", type=int)
-@click.option("--json", 'output_json', is_flag=True, default=False)
-def main(count, output_json):
+def randomise(count, output_json, output_html=True):
     who_adjectives = load_word_list("lists/who_adjectives.txt")
     who = load_word_list("lists/who_nouns.txt")
     plot_devices = load_word_list("lists/plot_devices.txt")
@@ -57,13 +54,13 @@ def main(count, output_json):
     for x in range(count):
         pick = {}
 
-        pick['who_value'] = " ".join([
+        pick['who'] = " ".join([
             choice(who_adjectives), choice(who)
         ])
-        pick['place_value'] = " ".join([
+        pick['place'] = " ".join([
             choice(place_adjectives), choice(places)
         ])
-        pick['plot_dev_value'] = choice(plot_devices)
+        pick['plot_device'] = choice(plot_devices)
         pick['random_items'] = pick_items(items_list)
 
         if output_json:
@@ -71,7 +68,14 @@ def main(count, output_json):
         else:
             print_to_console(x, pick)
     if output_json:
-        print(json.dumps(json_objects, indent=4))
+        return json.dumps(json_objects, indent=4)
+
+
+@click.command()
+@click.argument("count", type=int)
+@click.option("--json", 'output_json', is_flag=True, default=False)
+def main(count, output_json):
+    randomise(count, output_json)
 
 
 if __name__ == '__main__':

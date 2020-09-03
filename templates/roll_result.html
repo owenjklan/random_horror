@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Random Horror</title>
+	</head>
+
+	<body>
+	{% for horror in horrors %}
+
+	<table style='margin-bottom: 20px; border: 1 px solid black;'>
+		<tr><td><em>Who</em></td><td>{{ horror['who'] }}</td></tr>
+		<tr><td><em>Place</em></td><td>{{ horror['place'] }}</td></tr>
+		<tr><td><em>Plot Device</em></td><td>{{ horror['plot_device'] }}</td></tr>
+		<tr><td><em>Random items. Pick 2+</em></td><td>{{ horror['random_items'] }}</td></tr>
+	</table>
+	{% endfor %}
+	</body>
+</html>
