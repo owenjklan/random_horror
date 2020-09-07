@@ -1,0 +1,23 @@
+body {
+	background-color:    #333;
+	color:				 $ccc;
+}
+
+h1 {
+	font-family:         monospace;
+}
+
+div#header {
+	border-bottom:  1px solid black;
+	margin:			20px;
+}
+
+div#content-div{
+
+}
+
+th {
+	border-style: solid;
+	border-width: 1;
+	border-color: black;
+}
