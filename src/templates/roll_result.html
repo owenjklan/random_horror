@@ -11,6 +11,9 @@
         <span class='roll-value'><label for="item-choice-{{ loop.index }}">{{ item_name }}</label>
         <input id="item-choice-{{ loop.index }}" type="checkbox" value="{{ item_name }}" /></span>
         {% endfor %}
+        <div>
+            <button class='roll-choice-btn'>Choose!</button>
+        </div>
     </div>
     {% endfor %}
 {% endblock %}
