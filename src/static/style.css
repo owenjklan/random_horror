@@ -19,6 +19,7 @@ div#content-div{
 
 .roll-results {
     border: 1px solid black;
+    overflow: hidden;
 }
 
 .roll-results tr {
@@ -29,11 +30,15 @@ div#content-div{
     font-family: courier, monospace;
     font-variant: small-caps;
     font-size:   20px;
+    float: left;
+    clear: left;
 }
 
 .roll-value {
     font-family: courier, monospace;
     font-size:   18px;
+    float: right;
+    clear: none;
 }
 
 
