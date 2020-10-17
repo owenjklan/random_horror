@@ -37,11 +37,11 @@ def index(num=3):
 
 @click.command()
 @click.option('--host', '-h', 'host', type=str,
-	          default="127.0.0.1", show_default=True,
-	          help='Specify host to listen on.')
+              default="127.0.0.1", show_default=True,
+              help='Specify host to listen on.')
 @click.option('--port', '-p', 'port', type=int,
-	          default=800, show_default=True,
-	          help='Specify port to listen on.')
+              default=800, show_default=True,
+              help='Specify port to listen on.')
 def main(host, port):
     app.run(host=host, port=port)
 
