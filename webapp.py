@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 import json
 import sqlite3
+
 from flask import (
     g, Flask, render_template,
 )
+import click
 
 import random_horror
 
@@ -32,8 +34,15 @@ def index(num=3):
     return outhtml
 
 
-def main():
-    app.run(host="0.0.0.0", port="800")
+@click.command()
+@click.option('--host', '-h', 'host', type=str,
+	          default="127.0.0.1", show_default=True,
+	          help='Specify host to listen on.')
+@click.option('--port', '-p', 'port', type=int,
+	          default=800, show_default=True,
+	          help='Specify port to listen on.')
+def main(host, port):
+    app.run(host=host, port=port)
 
 
 if __name__ == '__main__':
