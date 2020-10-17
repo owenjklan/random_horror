@@ -16,7 +16,7 @@ def pick_items(misc):
     items = []
     for x in range(5):
         items.append(choice(misc))
-    return ", ".join(items)
+    return items
 
 
 def generate_json(pprinter, pick):

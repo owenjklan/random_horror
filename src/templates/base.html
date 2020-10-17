@@ -1,14 +1,11 @@
 <html>
     <head>
-      {% if title %}
-      <title>{{ title }} - Microblog</title>
-      {% else %}
-      <title>Welcome to Microblog</title>
-      {% endif %}
+      {% for style in stylesheets %}<link rel="stylesheet" href="{{ url_for('static', filename=style) }}">{% endfor %}
+      {% for script in scripts %}<script type="text/javascript" src="{{ url_for('static', filename=script) }}"></script>{% endfor %}      
+      {% if title %}<title>{{ title }}</title>
+      {% else %}<title>Random Horror</title>{% endif %}
     </head>
     <body>
-        <div>Microblog: <a href="/index">Home</a></div>
-        <hr>
         {% block content %}{% endblock %}
     </body>
 </html>

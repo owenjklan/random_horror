@@ -21,6 +21,10 @@ div#content-div{
     border: 1px solid black;
 }
 
+.roll-results tr {
+    border: 1px solid black;
+}
+
 .roll-label {
     font-family: courier, monospace;
     font-variant: small-caps;
