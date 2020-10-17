@@ -1,17 +1,22 @@
 <html>
-	<head>
-		<title>Random Horror</title>
-	</head>
+    <head>
+        <title>Random Horror</title>
+        {% for style in stylesheets %}
+        <link rel="stylesheet" href="{{ url_for('static', filename=style) }}">
+        {% endfor %}
+        {% for script in scripts %}
+        {% endfor %}
+    </head>
 
-	<body>
-	{% for horror in horrors %}
+    <body>
+    {% for horror in horrors %}
 
-	<table style='margin-bottom: 20px; border: 1 px solid black;'>
-		<tr><td><em>Who</em></td><td>{{ horror['who'] }}</td></tr>
-		<tr><td><em>Place</em></td><td>{{ horror['place'] }}</td></tr>
-		<tr><td><em>Plot Device</em></td><td>{{ horror['plot_device'] }}</td></tr>
-		<tr><td><em>Random items. Pick 2+</em></td><td>{{ horror['random_items'] }}</td></tr>
-	</table>
-	{% endfor %}
-	</body>
+    <table class='roll-results'>
+        <tr><td class='roll-label'><em>Who</em></td><td class='roll-value'>{{ horror['who'] }}</td></tr>
+        <tr><td class='roll-label'><em>Place</em></td><td class='roll-value'>{{ horror['place'] }}</td></tr>
+        <tr><td class='roll-label'><em>Plot Device</em></td><td class='roll-value'>{{ horror['plot_device'] }}</td></tr>
+        <tr><td class='roll-label'><em>Random items. Pick 2+</em></td><td class='roll-value'>{{ horror['random_items'] }}</td></tr>
+    </table>
+    {% endfor %}
+    </body>
 </html>
