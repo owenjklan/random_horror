@@ -1,7 +1,7 @@
 CREATE TABLE user (
 	id INTEGER PRIMARY KEY,
 	user_name   TEXT NOT NULL,
-	pword_hash  TEXT NOT NULL,
+	pword_hash  TEXT NOT NULL
 );
 
 
@@ -18,13 +18,13 @@ CREATE TABLE story (
 );
 
 
-CREATE TABLE story (
+CREATE TABLE rating (
 	id       INTEGER PRIMARY KEY,
 	by_user  INTEGER NOT NULL,
 	story_id INTEGER NOT NULL,
-	rating   INTEGER NOT NULL
+	rating   INTEGER NOT NULL,
 
-	FOREIGN KEY (by_user) REFERENCES user(id)
+	FOREIGN KEY (by_user) REFERENCES user(id),
 	FOREIGN KEY (story_id) REFERENCES story(id)
 );
 
