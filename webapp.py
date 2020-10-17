@@ -5,7 +5,20 @@ from flask import (
     g, Flask, render_template,
 )
 
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
+
+from config import Config
 import random_horror
+
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Sign In')
+
 
 DATABASE = 'random_horror_001.sq3'
 
@@ -20,8 +33,14 @@ def get_db():
 app = Flask("Random-Horror")
 
 
-@app.route('/', methods=['GET'])
-@app.route('/<num>')
+@app.route('/login')
+def login():
+    outhtml = ""
+    outhtml += render_template('login.html', form=LoginForm())
+    return outhtml
+
+
+@app.route('/random/<num>', methods=['GET'])
 def index(num=3):
     horrors = json.loads(random_horror.randomise(int(num), True))
     outhtml = ""
@@ -33,6 +52,7 @@ def index(num=3):
 
 
 def main():
+    app.config.from_object(Config)    
     app.run(host="0.0.0.0", port="800")
 
 
