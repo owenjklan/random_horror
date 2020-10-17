@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import json
 import sqlite3
 
@@ -59,11 +60,17 @@ def index(num=3):
               default="127.0.0.1", show_default=True,
               help='Specify host to listen on.')
 @click.option('--port', '-p', 'port', type=int,
-              default=800, show_default=True,
+              default=8800, show_default=True,
               help='Specify port to listen on.')
-def main(host, port):
+@click.option('--debug', '-D', 'app_debug',
+              is_flag=True, default=False, show_default=True,
+              help='Enable Debug mode. Code changes are picked-up.')
+def main(host, port, app_debug):
     app.config.from_object(Config)
-    app.run(host=host, port=port)
+    if app_debug:
+        click.secho("!!! App Debugging Enabled !!!", fg="blue")
+        click.secho(f"!!! [ PID: { os.getpid() } ] !!!", fg="yellow", bold=True)
+    app.run(host=host, port=port, debug=app_debug)
 
 
 if __name__ == '__main__':
