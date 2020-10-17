@@ -30,6 +30,7 @@ def index(num=3):
     outhtml += render_template(
         'roll_result.html',
         horrors=horrors,
+        stylesheets=['style.css']
     )
     return outhtml
 

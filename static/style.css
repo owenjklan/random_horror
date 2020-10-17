@@ -1,5 +1,5 @@
 body {
-	background-color:    #333;
+	background-color:    #555;
 	color:				 $ccc;
 }
 
@@ -15,6 +15,23 @@ div#header {
 div#content-div{
 
 }
+
+
+.roll-results {
+	border: 1px solid black;
+}
+
+.roll-label {
+	font-family: courier, monospace;
+	font-variant: small-caps;
+	font-size:   20px;
+}
+
+.roll-value {
+	font-family: courier, monospace;
+	font-size:   18px;
+}
+
 
 th {
 	border-style: solid;
