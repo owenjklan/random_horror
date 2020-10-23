@@ -12,9 +12,9 @@ def load_word_list(f):
     ]
 
 
-def pick_items(misc):
+def pick_items(misc, item_count):
     items = []
-    for x in range(5):
+    for x in range(item_count):
         items.append(choice(misc))
     return items
 
@@ -38,7 +38,7 @@ def print_to_console(number, pick):
     print()
 
 
-def randomise(count, output_json, output_html=True):
+def randomise(count, output_json, output_html=True, items_count=5):
     who_adjectives = load_word_list("lists/who_adjectives.txt")
     who = load_word_list("lists/who_nouns.txt")
     plot_devices = load_word_list("lists/plot_devices.txt")
@@ -61,7 +61,7 @@ def randomise(count, output_json, output_html=True):
             choice(place_adjectives), choice(places)
         ])
         pick['plot_device'] = choice(plot_devices)
-        pick['random_items'] = pick_items(items_list)
+        pick['random_items'] = pick_items(items_list, items_count)
 
         if output_json:
             json_objects.append(pick)
