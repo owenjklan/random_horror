@@ -20,7 +20,11 @@ from wtforms import (
 from wtforms.widgets import html5
 from wtforms.validators import DataRequired
 
-from config import Config
+from config import (
+    Config,
+    DEFAULT_BIND_HOST,
+    DEFAULT_BIND_PORT,
+)
 import random_horror
 
 
@@ -95,10 +99,10 @@ def index(num=3, items=5):
 
 @click.command()
 @click.option('--host', '-h', 'host', type=str,
-              default="127.0.0.1", show_default=True,
+              default=DEFAULT_BIND_HOST, show_default=True,
               help='Specify host to listen on.')
 @click.option('--port', '-p', 'port', type=int,
-              default=8800, show_default=True,
+              default=DEFAULT_BIND_PORT, show_default=True,
               help='Specify port to listen on.')
 @click.option('--debug', '-D', 'app_debug',
               is_flag=True, default=False, show_default=True,
