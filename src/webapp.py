@@ -4,7 +4,7 @@ import json
 import sqlite3
 
 from flask import (
-    g, Flask, render_template,
+    g, Flask, flash, render_template,
 )
 import click
 
@@ -72,13 +72,14 @@ def roll():
         count = int(form.roll_count.data)
         item_count = int(form.random_items_count.data)
         horrors = random_horror.randomise(count, True, items_count=item_count)
-        print(horrors)
+        # print(horrors)
+        flash(f"Rolled {count} times. {item_count} random items.")
         outhtml += render_template(
             'roll_result.html',
-            horrors=horrors,
+            horrors=json.loads(horrors),
             stylesheets=['style.css']
         )
-    else:  # POST-ed data. Get parameters for Roll URL
+    else:  # GET Request: Get parameters for Roll URL
         # Render roll input form
         outhtml += render_template('roll.html', form=form)
 

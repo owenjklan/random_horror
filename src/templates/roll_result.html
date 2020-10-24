@@ -3,11 +3,11 @@
 {% block content %}
     {% for horror in horrors %}
     <div class='roll-results'>
-        <span class='roll-label'><em>Who</em></span><span class='roll-value'>{{ horror['who'] }}</span>
-        <span class='roll-label'><em>Place</em></span><span class='roll-value'>{{ horror['place'] }}</span>
-        <span class='roll-label'><em>Plot Device</em></span><span class='roll-value'>{{ horror['plot_device'] }}</span>
+        <span class='roll-label'><em>Who</em></span><span class='roll-value'>{{ horror.who }}</span>
+        <span class='roll-label'><em>Place</em></span><span class='roll-value'>{{ horror.place }}</span>
+        <span class='roll-label'><em>Plot Device</em></span><span class='roll-value'>{{ horror.plot_device }}</span>
         <span class='roll-label'><em>Random items. Pick 2+</em></span><br>
-        {% for item_name in horror['random_items'] %}
+        {% for item_name in horror.random_items %}
         <span class='roll-value'><label for="item-choice-{{ loop.index }}">{{ item_name }}</label>
         <input id="item-choice-{{ loop.index }}" type="checkbox" value="{{ item_name }}" /></span>
         {% endfor %}
